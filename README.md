@@ -9,9 +9,9 @@ $ sudo docker exec -ti 7aaf5c474ca4 /bin/bash
 ```
 * node2
 ```
-$ sudo docker run -tid --name node1 ubuntu:16.04 /bin/bash
+$ sudo docker run -tid --name node2 ubuntu:16.04 /bin/bash
 $ sudo docker ps
-$ sudo docker exec -ti 7aaf5c474ca4 /bin/bash
+$ sudo docker exec -ti dbc20b4329e7 /bin/bash
 ```
 ## 在node1、node2裡安裝 Ethereum 與 geth
 ```
@@ -22,7 +22,7 @@ $ sudo docker exec -ti 7aaf5c474ca4 /bin/bash
 # apt-get install ethereum
 ```
 ## 在node1、node2裡安裝需要使用到的套件
-* vim編輯檔案
+* vim用來編輯檔案
 ```
 # apt-get install vim -y
 ```
@@ -41,7 +41,7 @@ $ sudo docker exec -ti 7aaf5c474ca4 /bin/bash
 ```
 # apt-get install git -y
 ```
-## 建立創世區塊
+## 在node1建立創世區塊
 ```
 # puppeth
 +-----------------------------------------------------------+
