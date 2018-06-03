@@ -170,7 +170,7 @@ Which file to save the genesis into? (default = apple.json)
 # geth --nodiscover --networkid 100 --datadir .etherum/ --rpc --rpcapi eth,net,web3 --rpcaddr=0.0.0.0 console
 > admin.nodeInfo
 > admin.addPeer("enode://421694075ed7dc89257d2560d790c7fc608651c80b4ca3d6f405028ebd19acd84a9a7f899b6f122284f07f9f9b3ca178ec96c3484916b5c494c048f8d671108d@172.17.0.3:30303")
-查看結果
+//查看結果
 > admin.peers
 [{
     caps: ["eth/63"],
@@ -210,7 +210,7 @@ Repeat passphrase:
 # geth --nodiscover --networkid 100 --datadir .etherum/ --rpc --rpcapi eth,net,web3 --rpcaddr=0.0.0.0 console
 > admin.nodeInfo
 > admin.addPeer("enode://72b752a011393397dd7bb4d90fc0fc5a1a00d156621cc5b2c4f399391517cfc258efbeccd9662979077a857e832a0c614e6995980be8360ebf724f8fb613684c@172.17.0.2:30303")
-查看結果
+//查看結果
 > admin.peers
 [{
     caps: ["eth/63"],
