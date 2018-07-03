@@ -1,0 +1,47 @@
+FROM ubuntu:16.04
+MAINTAINER "Titan Lee <Lisheng0706@gmail.com>"
+
+USER root
+
+# Replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+RUN apt-get update
+RUN apt-get install software-properties-common -y
+RUN add-apt-repository -y ppa:ethereum/ethereum
+RUN apt-get update
+RUN apt-get install ethereum -y
+RUN apt-get install vim -y
+RUN apt-get update
+
+# Install nvm with node and npm
+RUN apt-get install build-essential libssl-dev -y
+RUN apt-get install curl -y
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 8
+
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash \
+    && source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+RUN apt-get install git -y
+RUN git clone https://github.com/cubedro/eth-netstats
+
+#CMD ["npm install"]
+#CMD ["npm install -g grunt-cli"]
+
+RUN git clone https://github.com/cubedro/eth-net-intelligence-api
+#WORKDIR ~/eth-net-intelligence-api
+#CMD ["npm install"]
+#CMD ["npm install npm install -g pm2"]
+
+COPY ./apple.json ~/root/apple.json
+
+EXPOSE 3000:3000
+
+#ENTRYPOINT source ~/.profile

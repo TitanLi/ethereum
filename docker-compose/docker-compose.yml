@@ -1,0 +1,8 @@
+version: '2'
+services:
+  node1:
+    image: ethereum
+  node2:
+    depends_on:
+      - node1
+    image: ethereum
