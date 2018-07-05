@@ -1,5 +1,8 @@
 # ethereum
 [Screen教學](https://github.com/TitanLi/ethereum/blob/master/screen.md)
+
+```10.0.0.83```
+```sudo docker run -tid --name titan-eth-node1 -p 8545:8545 ubuntu:16.04 /bin/bash```
 ## 開啟node1、node2 Docker container
 * node1
 ```
@@ -16,10 +19,10 @@ $ sudo docker exec -ti dbc20b4329e7 /bin/bash
 ## 在node1、node2裡安裝 Ethereum 與 geth
 ```
 # apt-get update
-# apt-get install software-properties-common
+# apt-get install software-properties-common -y
 # add-apt-repository -y ppa:ethereum/ethereum
 # apt-get update
-# apt-get install ethereum
+# apt-get install ethereum -y
 ```
 ## 在node1、node2裡安裝需要使用到的套件
 * vim用來編輯檔案
@@ -29,7 +32,7 @@ $ sudo docker exec -ti dbc20b4329e7 /bin/bash
 * 安裝nodeJS環境
 ```
 # apt-get update
-# apt-get install build-essential libssl-dev
+# apt-get install build-essential libssl-dev -y
 # apt-get install curl -y
 # curl https://raw.githubusercontent.com/creationix/nvm/v0.25.0/install.sh | bash
 # source ~/.profile
@@ -154,6 +157,11 @@ Which file to save the genesis into? (default = apple.json)
 ```
 # cd eth-netstats
 # grunt
+# screen
+ctrl + A + D
+# WS_SECRET=101 npm start
+
+//[detached from 6679.pts-1.93ba2461887e]
 ```
 
 ## 在node1,node2啟動 API Service
@@ -165,9 +173,12 @@ Which file to save the genesis into? (default = apple.json)
 ## 在node1
 * IP:172.17.0.2
 * 進入有apple.json的目錄
+* [detached from 15979.pts-1.93ba2461887e]
 ```
 # geth --datadir .etherum/ init apple.json
 # geth --nodiscover --networkid 100 --datadir .etherum/ --rpc --rpcapi eth,net,web3 --rpcaddr=0.0.0.0 console
+//使用grpc API
+# geth --nodiscover --networkid 100 --datadir .etherum/ --rpc --rpcapi admin,debug,miner,personal,txpool,eth,net,web3 --rpcaddr=0.0.0.0 console
 > admin.nodeInfo
 > admin.addPeer("enode://421694075ed7dc89257d2560d790c7fc608651c80b4ca3d6f405028ebd19acd84a9a7f899b6f122284f07f9f9b3ca178ec96c3484916b5c494c048f8d671108d@172.17.0.3:30303")
 //查看結果
